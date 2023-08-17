@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/e2c53a38de.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <title>M.Sc. (Data Science) E-Portfolio</title>
+</head>
+<body>
+    <nav class="navbar sticky-top bg-body-tertiary">
+        <div class="container-fluid">
+            <div class="col">
+                <h5>Department of Computer Science</h5>
+                <h5>School of Sciences</h5>
+                <p>Banglore Yeshwanthpur Campus</p>
+            </div>
+            <img src="assets/christ_logo_color.png" alt="CHRIST (Deemed to be University) Logo" height="80">
+        </div>
+    </nav>
+    <section class="container-fluid" id="site-heading">
+        <h1 class="display-5 text-center">
+            M.Sc. (Data Science) E-Portfolio
+        </h1>
+    </section>
+    <!-- Student Profiles Heading -->
+    <section class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h1>Student Profiles</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="search-text" placeholder="Search and filter results... (e.g.: NLP, Cloud, Image Analytics, etc.)">
+                    <button class="btn btn-primary" id="search-button" type="button">Search</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container-fluid" id="profiles">
+        <div class="row row-cols-1 row-cols-md-2 row-cols lg-3" id="students">
+            <!-- student cards will be inserted here -->
+        </div>
+    </section>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="scripts/script.js"></script>
+</html>
