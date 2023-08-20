@@ -35,16 +35,24 @@ function get_default_card_arrangement(objects) {
                                 <p class="card-text">Specialization: ${specialization}</p>
                                 <p class="card-text">Skills: ${skills}</p>
                                 <p class="card-text">Projects: ${projects_truncated}</p>
+
                                 <div class="row" id="socials">
                                 <div class="col">
-                                    <a href="${github_link}" target="_blank" class="btn btn-primary"><i class="fa-brands fa-github"></i>GitHub</a>
+                                    <a href="${github_link}" target="_blank" class="btn btn-icon" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
                                 </div>
                                 <div class="col">
-                                    <a href="${linkedin_link}" target="_blank" class="btn btn-primary"><i class="fa-brands fa-linkedin"></i>LinkedIn</a>
+                                    <a href="${linkedin_link}" target="_blank" class="btn btn-icon" title="LinkedIn">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
                                 </div>
                                 <div class="col">
-                                    <a href="${portfolio_link}" target="_blank" class="btn btn-primary">Portfolio</a>
+                                    <a href="${portfolio_link}" target="_blank" class="btn btn-icon" title="Portfolio">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
                                 </div>
+                             </div>
                             </div>
                             </div>
                         </div>
@@ -55,6 +63,15 @@ function get_default_card_arrangement(objects) {
         $('#students').append(html);
     }
 }
+
+
+$(document).on('click', 'a[href^="#"]', function (event) {
+    event.preventDefault();
+    $('html, body').animate({
+        scrollTop: $($.attr(this, 'href')).offset().top
+    }, 500);
+});
+
 
 // ajax call to google sheets api
 $.ajax({
