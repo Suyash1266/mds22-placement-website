@@ -24,12 +24,12 @@ function get_default_card_arrangement(objects) {
         <div class="col">
                 <div class="card" id="${reg_no}">
                     <div class="row g-0">
-                        <div class="col-md-4 d-flex align-items-center justify-content-center">
+                        <div class="col-4 d-flex align-items-center justify-content-center">
                             <div class="circle-img">
                                 <img src="assets/profile_photos/${reg_no}.jpg" class="img-fluid rounded-circle" alt="Student Image">
                             </div>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-8">
                             <div class="card-body">
                                 <h2 class="card-title">${name}</h2>
                                 <p class="card-text">Specialization: ${specialization}</p>
