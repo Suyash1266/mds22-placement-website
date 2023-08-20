@@ -4,6 +4,10 @@ h1 {
     font-family: 'League Spartan', sans-serif;
 }
 
+#christ-logo {
+    height: 5rem;
+}
+
 /* ... (your existing styles) ... */
 
 /* Additional styles for the changes */
