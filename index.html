@@ -52,7 +52,42 @@
     </section>
     <!-- Marquee -->
     <section id="hero">
-        Marquee goes here
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="rectangle text-center">
+                        <h1>Class of 2022-24</h1>
+                        <p>
+
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="rectangle"></div>
+                </div>
+                <div class="carousel-item">
+                    <div class="rectangle"></div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </section>
     <!-- Statistics -->
     <section id="stats">
@@ -80,15 +115,30 @@
         </div>
     </section>
     <!-- Footer -->
-    <footer class="container-fluid bg-body-tertiary" id="contact-details">
-        <div class="row">
-            <div class="col-12">
-                <p class="text-center">
-                    &copy; 2023 CHRIST (Deemed to be University)
-                </p>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Christ (Deemed to be University)</h3>
+                <p><b>School of Sciences</b><br>
+                Yeshwanthpur Campus, Bengaluru</p>
+            </div>
+            <div class="footer-contact">
+                <div class="contact-person">
+                    <h4>Dr. Vinay M</h4>
+                    <p>Contact No: +91 99863 88234</p>
+                </div>
+                <div class="contact-person">
+                    <h4>Dr. BalaKrishna C</h4>
+                    <p>Contact No: +91 98657 82529</p>
+                </div>
             </div>
         </div>
+        <div class="footer-bottom">
+            &copy; 2023 CHRIST (Deemed to be University)
+        </div>
     </footer>
+      
+      
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

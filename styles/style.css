@@ -80,9 +80,72 @@ h1 {
     color: #20BEFF
 }
 
+.rectangle {
+    width: 100%;
+    height: 20rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 15px;
+    margin-bottom: 20px;
+    background: #0A66C2;
+}
+
 
 /* Add this CSS for smooth scrolling */
 html {
     scroll-behavior: smooth;
 }
-/* ... (rest of your styles) ... */
+/* ... (rest of your footer styles) ... */
+
+.footer {
+    background-color: #f4f4f4;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.footer-info p {
+    font-size: 1rem;
+    color: #383838;
+}
+
+.footer-contact {
+    display: flex;
+}
+
+.contact-person {
+    margin-right: 30px;
+}
+
+.contact-person h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.contact-person p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+    color: #777;
+}
+
+  
+
+
