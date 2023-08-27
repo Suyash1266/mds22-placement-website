@@ -10,30 +10,48 @@ function convert_to_title_case(str) {
 
 function get_default_card_arrangement(objects) {
     $('#students').empty();
-    for (const object of objects) {
-        const name = convert_to_title_case(object['Name']);
-        const reg_no = object['Registration Number'];
-        const specialization = object['Specialities/Expertise'];
-        const projects = object['Projects'];
-        const skills = object['Programming Languages'] + ", " + object['Software and Technologies'];
-        const github_link = object['GitHub'];
-        const linkedin_link = object['Linkedin'];
-        const kaggle = object['Kaggle'];
-        const portfolio_link = object['DS Portfolio Link'];
-        let projects_truncated = projects;
-        // if project is more is than length 50, then truncate it
-        if (projects.length > 100) {
-            projects_truncated = projects.substring(0, 100) + "...";
-            // add a learn more link to projects
-            projects_truncated += `<a href="${portfolio_link}#projects" class="">Read More</a>`;
+    objects.sort((a, b) => {
+        const nameA = a['Name'].toLowerCase();
+        const nameB = b['Name'].toLowerCase();
+        if (nameA < nameB) {
+            return -1;
         }
-        let kaggle_button = "";
-        if (kaggle) {
-            kaggle_button = `<a href="${kaggle}" target="_blank" class="btn btn-icon" title="Kaggle">
+        else if (nameA > nameB) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    });
+    for (const object of objects) {
+        $('#students').append(get_card(object));
+    }
+}
+
+function get_card(object) {
+    const name = convert_to_title_case(object['Name']);
+    const reg_no = object['Registration Number'];
+    const specialization = object['Specialities/Expertise'];
+    const projects = object['Projects'];
+    const skills = object['Programming Languages'] + ", " + object['Software and Technologies'];
+    const github_link = object['GitHub'];
+    const linkedin_link = object['Linkedin'];
+    const kaggle = object['Kaggle'];
+    const portfolio_link = object['DS Portfolio Link'];
+    let projects_truncated = projects;
+    // if project is more is than length 50, then truncate it
+    if (projects.length > 100) {
+        projects_truncated = projects.substring(0, 100) + "...";
+        // add a learn more link to projects
+        projects_truncated += `<a href="${portfolio_link}#projects" class="">Read More</a>`;
+    }
+    let kaggle_button = "";
+    if (kaggle) {
+        kaggle_button = `<a href="${kaggle}" target="_blank" class="btn btn-icon" title="Kaggle">
             <i class="fab fa-kaggle"></i>
             </a>`;
-        }
-        const html = $(`
+    }
+    const html = $(`
         <div class="col">
                 <div class="card" id="${reg_no}">
                     <div class="row g-0">
@@ -45,9 +63,9 @@ function get_default_card_arrangement(objects) {
                         <div class="col-8">
                             <div class="card-body">
                                 <h2 class="card-title">${name}</h2>
-                                <p class="card-text">Specialization: ${specialization}</p>
-                                <p class="card-text">Skills: ${skills}</p>
-                                <p class="card-text">Projects: ${projects_truncated}</p>
+                                <p class="card-text specialization"><b>Specialization</b>: ${specialization}</p>
+                                <p class="card-text skills"><b>Skills</b>: ${skills}</p>
+                                <p class="card-text projects"><b>Projects</b>: ${projects_truncated}</p>
 
                                 <div id="socials">
                                     <a href="${linkedin_link}" target="_blank" class="btn btn-icon" title="LinkedIn">
@@ -68,8 +86,7 @@ function get_default_card_arrangement(objects) {
                 </div>
             </div>
         `);
-        $('#students').append(html);
-    }
+    return html;
 }
 
 
@@ -80,21 +97,21 @@ $(document).on('click', 'a[href^="#"]', function (event) {
     }, 500);
 });
 
-
+let results;
 // ajax call to google sheets api
 $.ajax({
     url: apiUrl,
     method: "GET"
 }).then(function (response) {
     const [header, ...rest] = response.values;
-    const result = rest.map(row => {
+    results = rest.map(row => {
         const obj = {};
         header.forEach((column, index) => {
             obj[column] = row[index];
         });
         return obj;
     });
-    get_default_card_arrangement(result);
+    get_default_card_arrangement(results);
 }
 );
 
@@ -119,4 +136,41 @@ $(window).on("scroll", function () {
     });
 });
     
+//#endregion
+
+//#region search bar functions
+function search(objects, search_text) {
+    $('#students').empty();
+    const filtered_objects = objects.filter(object => {
+        const name = object['Name'].toLowerCase();
+        const reg_no = object['Registration Number'].toLowerCase();
+        const specialization = object['Specialities/Expertise'].toLowerCase();
+        const projects = object['Projects'].toLowerCase();
+        const skills = (object['Programming Languages'] + ", " + object['Software and Technologies']).toLowerCase();
+        return name.includes(search_text) || reg_no.includes(search_text) || specialization.includes(search_text) || projects.includes(search_text) || skills.includes(search_text);
+    }
+    );
+    for (const object of filtered_objects) {
+        $('#students').append(get_card(object));
+    }
+}
+
+// get the search text and call search function when search-button is clicked
+$('#search-button').click(function () {
+    const search_text = $('#search-text').val();
+    if (search_text === "") {
+        get_default_card_arrangement(results);
+        return;
+    }
+    const search_text_lower = search_text.toLowerCase();
+    search(results, search_text_lower);
+});
+
+// detect change in search text and get default card arrangement if search text is empty
+$('#search-text').on('input', function () {
+    const search_text = $('#search-text').val();
+    if (search_text === "") {
+        get_default_card_arrangement(results);
+    }
+});
 //#endregion
