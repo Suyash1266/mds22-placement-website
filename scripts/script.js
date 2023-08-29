@@ -139,15 +139,38 @@ $(window).on("scroll", function () {
 //#endregion
 
 //#region search bar functions
+// create a map of common abbreviations used in data science, such as nlp, iot, ml, etc. and include both the abbreviation and the full form as values
+const abbreviation_map = new Map();
+abbreviation_map.set('nlp', 'natural language processing');
+abbreviation_map.set('iot', 'internet of things');
+abbreviation_map.set('ml', 'machine learning');
+abbreviation_map.set('dl', 'deep learning');
+abbreviation_map.set('ai', 'artificial intelligence');
+abbreviation_map.set('cv', 'computer vision');
+abbreviation_map.set('rl', 'reinforcement learning');
+
+
 function search(objects, search_text) {
     $('#students').empty();
     const filtered_objects = objects.filter(object => {
         const name = object['Name'].toLowerCase();
-        const reg_no = object['Registration Number'].toLowerCase();
-        const specialization = object['Specialities/Expertise'].toLowerCase();
-        const projects = object['Projects'].toLowerCase();
-        const skills = (object['Programming Languages'] + ", " + object['Software and Technologies']).toLowerCase();
-        return name.includes(search_text) || reg_no.includes(search_text) || specialization.includes(search_text) || projects.includes(search_text) || skills.includes(search_text);
+        const specialization = object['Brochure Specialization'].toLowerCase();
+        const projects = object['Brochure Project'].toLowerCase();
+        const skills = object['Brochure Skills'].toLowerCase();
+
+        // if search text is an abbreviation, then search for the full form of the abbreviation and the abbreviation itself
+        if (abbreviation_map.has(search_text)) {
+            const full_form = abbreviation_map.get(search_text);
+            return specialization.includes(search_text) || specialization.includes(full_form) || projects.includes(search_text) || projects.includes(full_form) || skills.includes(search_text) || skills.includes(full_form);
+        }
+        // if the search text is available as a value or a part of the value in the abbreviation map, then search for the key and the value
+        if ([...abbreviation_map.values()].includes(search_text)) {
+            const full_form = [...abbreviation_map.keys()][[...abbreviation_map.values()].indexOf(search_text)];
+            const abbreviation = [...abbreviation_map.values()][[...abbreviation_map.keys()].indexOf(search_text)];
+            return specialization.includes(search_text) || specialization.includes(full_form) || specialization.includes(abbreviation) || projects.includes(search_text) || projects.includes(full_form) || projects.includes(abbreviation) || skills.includes(search_text) || skills.includes(full_form) || skills.includes(abbreviation);
+        }
+
+        return name.includes(search_text) || specialization.includes(search_text) || projects.includes(search_text) || skills.includes(search_text);
     }
     );
     for (const object of filtered_objects) {
