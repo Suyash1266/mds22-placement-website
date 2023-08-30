@@ -52,7 +52,7 @@ function get_card(object) {
             </a>`;
     }
     const html = $(`
-        <div class="col card" id="${reg_no}">
+        <div class="col-md-6 card" id="${reg_no}">
                     <div class="row g-0">
                         <div class="col-4 d-flex align-items-center justify-content-center">
                             <div class="circle-img">
