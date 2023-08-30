@@ -258,6 +258,7 @@ const csElective_config = {
     type: 'doughnut',
     data: csElective1_data,
     options: {
+        responsive: true,
         plugins: {
             title: {
                 display: true,
@@ -320,6 +321,7 @@ const statElective_config = {
     type: 'doughnut',
     data: statElective_data,
     options: {
+        responsive: true,
         plugins: {
             title: {
                 display: true,
@@ -391,6 +393,7 @@ function createSkillsBarChart(objects) {
         type: 'bar',
         data: skillChartData,
         options: {
+            responsive: true,
             scales: {
                 y: {
                     beginAtZero: true
