@@ -96,7 +96,7 @@ h1 {
 
 #class-22-24 {
     /* set image as background */
-    background-image: url('assets/class_22_24.jpeg');
+    background-image: url('../assets/class_22_24.jpeg');
     background-position: center center;
 }
 
@@ -112,7 +112,7 @@ h1 {
 }
 
 #brochure {
-    background-image: url('assets/christ_arch_cover.jpg');
+    background-image: url('../assets/christ_arch_cover.jpg');
     background-position: center center;
 }
 
