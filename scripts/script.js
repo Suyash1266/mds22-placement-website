@@ -31,9 +31,9 @@ function get_default_card_arrangement(objects) {
 function get_card(object) {
     const name = convert_to_title_case(object['Name']);
     const reg_no = object['Registration Number'];
-    const specialization = object['Specialities/Expertise'];
-    const projects = object['Projects'];
-    const skills = object['Programming Languages'] + ", " + object['Software and Technologies'];
+    const specialization = object['Brochure Specialization'];
+    const projects = object['Brochure Project'];
+    const skills = object['Brochure Skills'];
     const github_link = object['GitHub'];
     const linkedin_link = object['Linkedin'];
     const kaggle = object['Kaggle'];
@@ -52,8 +52,7 @@ function get_card(object) {
             </a>`;
     }
     const html = $(`
-        <div class="col">
-                <div class="card" id="${reg_no}">
+        <div class="col card" id="${reg_no}">
                     <div class="row g-0">
                         <div class="col-4 d-flex align-items-center justify-content-center">
                             <div class="circle-img">
@@ -83,19 +82,12 @@ function get_card(object) {
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         `);
     return html;
 }
 
 
-$(document).on('click', 'a[href^="#"]', function (event) {
-    event.preventDefault();
-    $('html, body').animate({
-        scrollTop: $($.attr(this, 'href')).offset().top
-    }, 500);
-});
 
 let results;
 // ajax call to google sheets api
@@ -112,28 +104,17 @@ $.ajax({
         return obj;
     });
     get_default_card_arrangement(results);
-}
-);
-
-//#region navbar functions
-// add active to nav link clicked and remove from others
-$('.nav-link').click(function () {
-    $('.nav-link').removeClass('active');
-    $(this).addClass('active');
+    createSkillsBarChart(results);
 });
 
-// add active to the current nav link based on which section is in view
-$(window).on("scroll", function () {
-    const fromTop = $(this).scrollTop() + 50; // Add some offset for better accuracy
-    $("nav a.nav-link").each(function () {
-        const section = $(this.hash);
-        if (section.length) {
-            if (section.offset().top <= fromTop && section.offset().top + section.height() > fromTop) {
-                $("nav a.nav-link").removeClass("active");
-                $(this).addClass("active");
-            }
-        }
-    });
+// if the page is at top remove the navbar-drop class from navbar else add
+$(window).scroll(function () {
+    if ($(this).scrollTop() === 0) {
+        $('.navbar').removeClass('navbar-drop');
+    }
+    else {
+        $('.navbar').addClass('navbar-drop');
+    }
 });
     
 //#endregion
@@ -148,6 +129,7 @@ abbreviation_map.set('dl', 'deep learning');
 abbreviation_map.set('ai', 'artificial intelligence');
 abbreviation_map.set('cv', 'computer vision');
 abbreviation_map.set('rl', 'reinforcement learning');
+abbreviation_map.set('powerbi', 'power bi');
 
 
 function search(objects, search_text) {
@@ -196,4 +178,239 @@ $('#search-text').on('input', function () {
         get_default_card_arrangement(results);
     }
 });
+
+// ! Not working
+// when cursor is in text bar make enter key click on search button
+$('search-text').on('keyup', function (e) {
+    console.log(e.which);
+    if (e.key === 'Enter' || e.keyCode === 13) {
+        $('search-button').click();
+    }
+});
+//#endregion
+
+//#region statistics
+function getPixelFromRem(remValue) {
+    const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    return remValue * rootFontSize;
+}
+
+function getSkills(objects) {
+    const skillMap = new Map();
+    objects.forEach(object => {
+        const skills = (object['Programming Languages'] + ", " + object['Software and Technologies']).split(',').map(skill => skill.trim());
+        skills.forEach(skill => {
+            if (skillMap.has(skill)) {
+                skillMap.set(skill, skillMap.get(skill) + 1);
+            } else {
+                skillMap.set(skill, 1);
+            }
+        });
+    });
+    const filteredSkills = new Map([...skillMap.entries()].filter(([skill, count]) => count > 10));
+    const sortedSkills = new Map([...filteredSkills.entries()].sort((a, b) => b[1] - a[1]));
+    return sortedSkills;
+}
+
+Chart.register(ChartDataLabels);
+
+const csElective = $('#sem-2-cs-elective');
+const csElective1_data = {
+    labels: [
+        'Image and Video Analytics',
+        'Web Analytics',
+        'Internet of Things',
+        'Natural Language Processing',
+        'Hadoop/Big Data Analytics'
+    ],
+    datasets: [{
+        label: 'Semester 2 Computer Science Specialization',
+        data: [29, 29, 27, 0, 0],
+        backgroundColor: [
+            'rgb(196, 140, 235)',
+            'rgb(238, 153, 171)',
+            'rgb(130, 208, 203)',
+            'rgb(156, 204, 101)',
+            'rgb(128, 164, 237)'
+        ],
+        hoverOffset: 4,
+        datalabels: {
+            anchor: 'center',
+            borderWidth: 0
+        }
+    }, {
+        label: 'Semester 3 Computer Science Specialization',
+        data: [0, 0, 0, 43, 42],
+        backgroundColor: [
+            'transparent',
+            'transparent',
+            'transparent',
+            'rgb(156, 204, 101)',
+            'rgb(128, 164, 237)'
+        ],
+        hoverOffset: 4,
+        datalabels: {
+            anchor: 'start'
+        }
+    }]
+};
+const csElective_config = {
+    type: 'doughnut',
+    data: csElective1_data,
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Data Analytics and Internet Technologies',
+                font: {
+                    size: getPixelFromRem(1.5)
+                }
+            },
+            datalabels: {
+                backgroundColor: function (context) {
+                    return context.dataset.backgroundColor;
+                },
+                borderColor: 'white',
+                borderRadius: 25,
+                borderWidth: 2,
+                color: 'white',
+                font: {
+                    weight: 'bold',
+                    size: getPixelFromRem(1.2)
+                },
+                display: function (context) {
+                    const dataset = context.dataset;
+                    const count = dataset.data.length;
+                    const value = dataset.data[context.dataIndex];
+                    return value > count * 1.5;
+                },
+                padding: 6,
+                formatter: function (value) {
+                    return Math.round(value/85*100) + '%'
+                }
+            }
+        }
+    }
+};
+const csElectiveChart = new Chart(csElective, csElective_config);
+
+const statElective = $('#sem-2-stat-elective');
+const statElective_data = {
+    labels: [
+        'Multivariate Analysis',
+        'Stochastic Process',
+        'Time Series Analysis',
+        'Bayesian Inference',
+        'Bio-Statistics'
+    ],
+    datasets: [{
+        label: 'Semester 2 Statistics Specialization',
+        data: [43, 42, 0, 0, 0],
+        backgroundColor: [
+            'rgb(190, 160, 210)',
+            'rgb(145, 200, 190)',
+            'rgb(255, 190, 165)',
+            'rgb(175, 220, 185)',
+            'rgb(240, 170, 195)'
+        ],
+        hoverOffset: 4
+    }]
+};
+const statElective_config = {
+    type: 'doughnut',
+    data: statElective_data,
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Statistics',
+                font: {
+                    size: getPixelFromRem(1.5)
+                }
+            },
+            datalabels: {
+                backgroundColor: function (context) {
+                    return context.dataset.backgroundColor;
+                },
+                borderColor: 'white',
+                borderRadius: 25,
+                borderWidth: 2,
+                color: 'white',
+                font: {
+                    weight: 'bold',
+                    size: 20
+                },
+                display: function (context) {
+                    const dataset = context.dataset;
+                    const count = dataset.data.length;
+                    const value = dataset.data[context.dataIndex];
+                    return value > count * 1.5;
+                },
+                padding: 6,
+                formatter: function (value) {
+                    return Math.round(value / 85 * 100) + '%'
+                }
+            }
+        }
+    }
+};
+const statElectiveChart = new Chart(statElective, statElective_config);
+
+function createSkillsBarChart(objects) {
+    const skillCategories = {
+        "Programming Languages": ["Python", "JAVA", "R", "C/C++"],
+        "Data Analysis Libraries": ["MS Excel", "Pandas", "Numpy", "SQL", "NLTK"],
+        "Data Visualization Tools": ["Power BI", "Seaborn", "Tableau", "Plotly"],
+        "Machine Learning Frameworks": ["PyTorch", "Tensorflow", "Keras"],
+        "Miscellaneous": ["MATLAB", "SPSS"]
+    };
+
+    const categoryColors = {
+        "Programming Languages": 'rgba(54, 162, 235, 0.6)',
+        "Data Analysis Libraries": 'rgba(75, 192, 192, 0.6)',
+        "Data Visualization Tools": 'rgba(255, 99, 132, 0.6)',
+        "Machine Learning Frameworks": 'rgba(153, 102, 255, 0.6)',
+        "Miscellaneous": 'rgba(255, 206, 86, 0.6)'
+    };
+
+    const skillBackgroundColors = Array.from(getSkills(objects).keys()).map(skill => {
+        const category = Object.keys(skillCategories).find(category => skillCategories[category].includes(skill));
+        return categoryColors[category];
+    });
+
+    const skillChartData = {
+        labels: Array.from(getSkills(objects).keys()),
+        datasets: [{
+            label: 'Skills',
+            data: Array.from(getSkills(objects).values()),
+            backgroundColor: skillBackgroundColors,
+            borderWidth: 1
+        }]
+    }
+    const skillChartConfig = {
+        type: 'bar',
+        data: skillChartData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: 'Skills',
+                    font: {
+                        size: getPixelFromRem(1.5)
+                    }
+                }
+            }
+        }
+    }
+    const skillCanvas = $('#skills-graph');
+    return new Chart(skillCanvas, skillChartConfig);
+}
 //#endregion

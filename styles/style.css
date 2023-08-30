@@ -8,6 +8,11 @@ h1 {
     height: 5rem;
 }
 
+.navbar-drop {
+    /* add a bottom drop shadow */
+    box-shadow: 0 0 11px rgba(33,33,33,.5);
+}
+
 /* ... (your existing styles) ... */
 
 /* Additional styles for the changes */
@@ -39,7 +44,7 @@ h1 {
 }
 
 .card:hover {
-    box-shadow: 0 0 11px rgba(33,33,33,.2);
+    box-shadow: 0 0 15px rgba(33,33,33,.2);
 }
 
 .card:hover .card-title {
@@ -84,12 +89,49 @@ h1 {
     width: 100%;
     height: 20rem;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 15px;
     margin-bottom: 20px;
     background: #0A66C2;
 }
 
+#class-22-24 {
+    /* set image as background */
+    background-image: url('/assets/class_22_24.jpeg');
+    background-position: center center;
+}
+
+#class-22-24::before {
+    /* add a dark overlay */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20rem;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+#brochure {
+    background-image: url('/assets/christ_arch_cover.jpg');
+    background-position: center center;
+}
+
+#brochure::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20rem;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.slide-content {
+    position: relative;
+    z-index: 1;
+    color: #ddd;
+    padding: 2% 10%;
+}
 
 /* Add this CSS for smooth scrolling */
 html {
@@ -136,6 +178,7 @@ html {
 .contact-person p {
     font-size: 1rem;
     color: #555;
+    margin-bottom: 0.2rem;
 }
 
 .footer-bottom {
