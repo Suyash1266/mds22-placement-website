@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-        <script src="https://kit.fontawesome.com/e2c53a38de.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e2c53a38de.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="shortcut icon" href="assets/christ_logo_color_circular.png" type="image/x-icon">
     <title>M.Sc. (Data Science) E-Portfolio</title>
 </head>
+
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar sticky-top navbar-expand-md bg-body-tertiary" id="navbar">
@@ -19,9 +21,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <a class="navbar-brand d-md-none" href="#"><img src="assets/christ_logo_color.png" alt="CHRIST (Deemed to be University)" id="christ-logo"></a>
             <a class="navbar-brand d-md-none" href="#"><img src="assets/christ_logo_color.png"
                     alt="CHRIST (Deemed to be University)" id="christ-logo"></a>
+
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <ul class="navbar-nav nav-underline me-auto mb-2 mb-lg-0 text-center">
                     <li class="nav-item">
@@ -37,11 +39,12 @@
                         <a class="nav-link" href="#contact-details">Connect with us</a>
                     </li>
                 </ul>
-                <a href="https://bit.ly/reg-mds-byc-24" target="_blank" rel="noopener noreferrer" class="btn btn-danger" id="recruit-button">Recruit
-                    Students</a>
+                <a href="https://bit.ly/reg-mds-byc-24" target="_blank" rel="noopener noreferrer" class="btn btn-danger"
+                    id="recruit-button">Recruit Students</a>
             </div>
 
-            <a class="navbar-brand d-none d-md-block" href="#"><img src="assets/christ_logo_color.png" alt="CHRIST (Deemed to be University)" id="christ-logo"></a>
+            <a class="navbar-brand d-none d-md-block" href="#"><img src="assets/christ_logo_color.png"
+                    alt="CHRIST (Deemed to be University)" id="christ-logo"></a>
         </div>
     </nav>
     <!-- Site Heading -->
@@ -65,7 +68,9 @@
                         <div class="slide-content">
                             <h1>Class of 2022-24</h1>
                             <p>
-                                Welcome to the M.Sc. (Data Science) E-Portfolio of the Class of 2022-24. A batch of 86 talented students who excel in various fields of computer science, artificial intelligence and data science.
+                                Welcome to the M.Sc. (Data Science) E-Portfolio of the Class of 2022-24. A batch of 86
+                                talented students who excel in various fields of computer science, artificial
+                                intelligence and data science.
                             </p>
                             <a href="#stats" class="btn btn-info">Learn More</a>
                         </div>
@@ -74,19 +79,19 @@
                         <div class="slide-content">
                             <h1>Placement Brochure</h1>
                             <p>
-                                The Placement Brochure for the class of 2022-24 highlights everything about our university and course, from the curriculum to the achievements of our students to the placement workflow.
+                                The Placement Brochure for the class of 2022-24 highlights everything about our
+                                university and course, from the curriculum to the achievements of our students to the
+                                placement workflow.
                             </p>
                             <a href="assets/Placement_Brochure.pdf" class="btn btn-info">Download Brochure</a>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel"
-                    data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel"
-                    data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
@@ -94,9 +99,13 @@
         </section>
         <!-- Statistics -->
         <section class="container-fluid" id="stats">
-            <h1 class="text-center">Class Statistics</h1>
+            <h1 class="text-center">About the Class of 2022-24</h1>
+            <div class="numbers container-fluid">
+                <div class="row row-cols-md-3">
+                </div>
+            </div>
             <div class="graphs container-fluid">
-                <div class="row">                    
+                <div class="row">
                     <div class="graph col-md-6 justify-content-center">
                         <canvas id="sem-2-cs-elective"></canvas>
                     </div>
@@ -120,7 +129,8 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="search-text" placeholder="Search and filter results... (e.g.: NLP, Cloud, Image Analytics, etc.)">
+                        <input type="text" class="form-control" id="search-text"
+                            placeholder="Search and filter results... (e.g.: NLP, Cloud, Image Analytics, etc.)">
                         <button class="btn btn-primary" id="search-button" type="button">Search</button>
                     </div>
                 </div>
@@ -131,20 +141,23 @@
                 </div>
             </div>
         </section>
-    </div>
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-info">
-                <h3>Christ (Deemed to be University)</h3>
-                <p><b>Department of Computer Science</b><br/>
-                School of Science<br/>
-                Bangalore Yeshwanthpur Campus</p>
-                <i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;&nbsp;<a href="https://goo.gl/maps/Ne8HnRegdWst9AeWA" class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" target="_blank" rel="noopener noreferrer">Reach the Campus</a>
-            </div>
-            <div class="footer-contact">
-                <div class="contact-person">
-                    <h4>Connect with us</h4>
+        <!-- Footer -->
+        <footer class="footer" id="contact-details">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Christ (Deemed to be University)</h3>
+                    <p><b>Department of Computer Science</b><br />
+                        School of Science<br />
+                        Bangalore Yeshwanthpur Campus</p>
+                    <i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;&nbsp;<a
+                        href="https://goo.gl/maps/Ne8HnRegdWst9AeWA"
+                        class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                        target="_blank" rel="noopener noreferrer">Reach the Campus</a>
+                </div>
+                <div class="footer-contact">
+                    <div class="contact-person">
+                        <h4>Connect with us</h4>
+                        <p><i class="fa-solid "></i></p>
                         <p><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;&nbsp;<a
                                 href="mailto:cs.placements@christuniversity.in"
                                 class="ink-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">cs.placements@christuniversity.in</a>
@@ -153,21 +166,28 @@
                     <div class="contact-person">
                         <h4>Dr. Vinay M</h4>
                         <p><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;&nbsp;+91 99863 88234</p>
-                    <p><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;&nbsp;<a href="mailto:vinay.m@christuniversity.in" class="ink-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">vinay.m@christuniversity.in</a></p>
-                </div>
-                <div class="contact-person">
+                        <p><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;&nbsp;<a
+                                href="mailto:vinay.m@christuniversity.in"
+                                class="ink-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">vinay.m@christuniversity.in</a>
+                        </p>
+                    </div>
+                    <div class="contact-person">
                         <h4>Dr. Balakrishnan C</h4>
                         <p><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;&nbsp;+91 98657 82529</p>
-                    <p><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;&nbsp;<a href="mailto:balakrishnan.c@christuniversity.in" class="ink-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">balakrishnan.c@christuniversity.in</a></p>
+                        <p><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;&nbsp;<a
+                                href="mailto:balakrishnan.c@christuniversity.in"
+                                class="ink-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">balakrishnan.c@christuniversity.in</a>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2023 CHRIST (Deemed to be University)
-        </div>
-    </footer>
-      
-      
+            <div class="footer-bottom">
+                &copy; 2023 CHRIST (Deemed to be University)
+            </div>
+        </footer>
+    </div>
+
+
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -179,4 +199,5 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.x"></script>
 <script src="scripts/script.js"></script>
+
 </html>
