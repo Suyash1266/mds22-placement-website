@@ -179,12 +179,11 @@ $('#search-text').on('input', function () {
     }
 });
 
-// ! Not working
 // when cursor is in text bar make enter key click on search button
-$('search-text').on('keyup', function (e) {
+$('#search-text').on('keyup', function (e) {
     console.log(e.which);
     if (e.key === 'Enter' || e.keyCode === 13) {
-        $('search-button').click();
+        $('#search-button').click();
     }
 });
 //#endregion
