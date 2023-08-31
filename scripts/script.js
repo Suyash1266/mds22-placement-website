@@ -314,7 +314,25 @@ const statElective_data = {
             'rgb(175, 220, 185)',
             'rgb(240, 170, 195)'
         ],
-        hoverOffset: 4
+        hoverOffset: 4,
+        datalabels: {
+            anchor: 'center',
+            borderWidth: 0
+        }
+    }, {
+        label: 'Semester 3 Statistics Statistics Specialization',
+        data: [0, 0, 30, 27, 28],
+        backgroundColor: [
+            'rgb(190, 160, 210)',
+            'rgb(145, 200, 190)',
+            'rgb(255, 190, 165)',
+            'rgb(175, 220, 185)',
+            'rgb(240, 170, 195)'
+        ],
+        hoverOffset: 4,
+        datalabels: {
+            anchor: 'start'
+        }
     }]
 };
 const statElective_config = {
