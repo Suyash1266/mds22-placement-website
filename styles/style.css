@@ -146,6 +146,11 @@ html {
 }
 /* ... (rest of your footer styles) ... */
 
+.slick-slide .inner {
+    margin: 0 15px;
+  }
+
+
 .footer {
     background-color: #f4f4f4;
     padding: 20px 0;
@@ -212,3 +217,37 @@ html {
         width: 100%;
     }
 }
+
+
+/* Sliders */
+
+/* Container for the marquee */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* The marquee content */
+  .marquee {
+    white-space: nowrap;
+    animation: marquee 15s linear infinite;
+  }
+  
+  /* Keyframes for the marquee animation */
+  @keyframes marquee {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  /* Style for individual slides */
+  .slick-slide {
+    display: inline-block;
+    margin-right: 20px; /* Adjust the margin as needed */
+    vertical-align: middle;
+  }
+  

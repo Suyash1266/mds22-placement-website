@@ -433,4 +433,16 @@ function createSkillsBarChart(objects) {
     const skillCanvas = $('#skills-graph');
     return new Chart(skillCanvas, skillChartConfig);
 }
-//#endregion
+//#Slider js
+
+// JavaScript for continuous scrolling
+const marquee = document.querySelector('.marquee');
+
+// Clone the marquee content to create a seamless loop
+marquee.innerHTML += marquee.innerHTML;
+
+// Adjust the animation duration based on the content width
+const contentWidth = marquee.offsetWidth;
+const animationDuration = (contentWidth / 100) * 5; // Adjust the factor as needed
+
+marquee.style.animationDuration = `${animationDuration}s`;
