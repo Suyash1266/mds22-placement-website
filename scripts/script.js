@@ -56,7 +56,7 @@ function get_card(object) {
                     <div class="row g-0">
                         <div class="col-4 d-flex align-items-center justify-content-center">
                             <div class="circle-img">
-                                <img src="assets/profile_photos/${reg_no}.jpg" class="img-fluid rounded-circle" alt="Student Image">
+                                <img src="assets/profile_photos/${reg_no}.jpg" class="img-fluid rounded-circle" alt="Student Image" loading="lazy">
                             </div>
                         </div>
                         <div class="col-8">
