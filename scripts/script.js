@@ -436,55 +436,18 @@ function createSkillsBarChart(objects) {
 //#endregion
 
 //#region Recruiters Section
-
-// JavaScript for continuous scrolling
-const marquee = document.querySelector('.marquee');
-
-// Define the folder path
-const folderPath = 'assets/company_logos';
-const fileNames = ["2560px-Eurofins_Scientific_Logo.svg.png",
-    "1409565391575110636_1409565391575110636-removebg-preview.png",
-    "580b57fcd9996e24bc43c4a1.png",
-    "5add80b5165215fa247d.webp",
-    "629a09b5b04c5ae587c411bb.png",
-    "Bi2i-with-bg-logo-removebg-preview.png",
-    "Citi.svg.png",
-    "consilio-vector-logo-removebg-preview.png",
-    "D._E._Shaw_&_Co._logo.png",
-    "download-removebg-preview (1).png",
-    "download-removebg-preview.png",
-    "grant-thornton-vector-logo-removebg-preview.png",
-    "hsbc-logo-1.png",
-    "IHS_Markit_logo.svg.png",
-    "image-removebg-preview.png",
-    "KPMG_logo.svg.png",
-    "Kritter-Full-Logo-Transparent-Background.png",
-    "MiQ_Logo-removebg-preview.png",
-    "Perficient-Logo-HorzJPG-removebg-preview.png",
-    "PRNE_Xoriant_Logo-removebg-preview.png",
-    "quantiphi-inc-logo-vector-removebg-preview.png",
-    "Syscloud_logo@2x.3ca6252c8cc99a8ffc85e4e2c6e6c1da225a3c48.png",
-    "TOSHIBA_Logo.png",
-    "Whatfix_Logo_RGB_Color.png"
-];
-
-// Now, 'filePaths' contains an array of all the full file paths in the folder
-fileNames.forEach(filePath => {
-    const logo_html = `
-        <div class="slick-slide">
-                <div class="inner">
-                  <img src="${folderPath + '/' + filePath}" alt="Placeholder" height="78" />
-                </div>
-              </div>
-   ` 
-    $('.marquee').append(logo_html);
+$('.slick.marquee').slick({
+    speed: 5000,
+    autoplay: true,
+    autoplaySpeed: 0,
+    centerMode: true,
+    cssEase: 'linear',
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    variableWidth: true,
+    infinite: true,
+    initialSlide: 1,
+    arrows: false,
+    buttons: false
 });
-
-// Clone the marquee content to create a seamless loop
-// marquee.innerHTML += marquee.innerHTML;
-
-// Adjust the animation duration based on the content width
-const contentWidth = marquee.offsetWidth;
-const animationDuration = (contentWidth / 200) * 3; // Adjust the factor as needed
-
-marquee.style.animationDuration = `${animationDuration}s`;
+//#endregion

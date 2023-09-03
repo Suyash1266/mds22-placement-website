@@ -5,7 +5,8 @@ h1 {
 }
 
 section {
-    margin-top: 1.2rem;
+    margin-top: 0.6rem;
+    margin-bottom: 0.6rem;
 }
 
 #christ-logo {
@@ -144,12 +145,6 @@ section {
 html {
     scroll-behavior: smooth;
 }
-/* ... (rest of your footer styles) ... */
-
-.slick-slide .inner {
-    margin: 0 15px;
-  }
-
 
 .footer {
     background-color: #f4f4f4;
@@ -218,57 +213,6 @@ html {
     }
 }
 
-
-/* Sliders */
-
-/* Container for the marquee */
-.marquee-container {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  /* The marquee content */
-  .marquee {
-    display: inline-block;
-    white-space: nowrap;
-    animation: marquee 10s linear infinite;
-  }
-
-  .marquee-container {
-    overflow: hidden;
-    white-space: nowrap;
-    width: auto; /* Adjust as needed */
+.slick-slide .inner {
+  margin: 0 15px;
 }
-  
-/* Hide the scrollbar */
-.marquee::-webkit-scrollbar {
-    width: 0.1em;
-}
-
-.marquee::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.marquee::-webkit-scrollbar-thumb {
-    background: transparent;
-}
-
-  /* Keyframes for the marquee animation */
-  @keyframes marquee {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-  
-  /* Style for individual slides */
-  .slick-slide {
-    display: inline-block;
-    margin-right: 20px; /* Adjust the margin as needed */
-    vertical-align: middle;
-  }
-  
-  
