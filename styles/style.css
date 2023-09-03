@@ -230,10 +230,30 @@ html {
   
   /* The marquee content */
   .marquee {
+    display: inline-block;
     white-space: nowrap;
-    animation: marquee 15s linear infinite;
+    animation: marquee 10s linear infinite;
   }
+
+  .marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: auto; /* Adjust as needed */
+}
   
+/* Hide the scrollbar */
+.marquee::-webkit-scrollbar {
+    width: 0.1em;
+}
+
+.marquee::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.marquee::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
   /* Keyframes for the marquee animation */
   @keyframes marquee {
     0% {
@@ -250,4 +270,5 @@ html {
     margin-right: 20px; /* Adjust the margin as needed */
     vertical-align: middle;
   }
+  
   
